@@ -1,4 +1,4 @@
-package JavaReplaceNonUTF8.net.gorton.ReplaceNonUTF8Char;
+package JavaReplaceNonUTF8.src.ReplaceNonUTF8Char;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -8,14 +8,14 @@ public class ReplaceNonUTF8Char {
     public static final char REPLACEMENT_CHAR = ' ';
     public static final String REPLACEMENT_STRING = "";
     public static void main(String[] args) {
-        String input = "\u00C4\u00B0nan\u00C3\u00A7 Esaslar\u00C4\u00B1"; // Sample string with non-UTF-8 character
+        String input = "Ä°nanÃ§ EsaslarÄ±"; // Sample string with non-UTF-8 character
         
-        String utf8String = replaceNonUTF8Characters(input, REPLACEMENT_CHAR); // Change '?' to your desired placeholder character
-        String utf8String1 = replaceNonUTF8Characters1(input, REPLACEMENT_STRING); 
+        String utf8Char = replaceNonUTF8Characters(input, REPLACEMENT_CHAR); // Change '?' to your desired placeholder character
+        String utf8String = replaceNonUTF8String(input, REPLACEMENT_STRING);
 
         System.out.println("Original String: " + input);
         System.out.println("UTF-8 String: " + utf8String);
-        System.out.println("UTF-8 String: " + utf8String1);
+        System.out.println("UTF-8 String: " + utf8Char);
     }
 
     public static String replaceNonUTF8Characters(String input, char placeholder) {
@@ -38,7 +38,7 @@ public class ReplaceNonUTF8Char {
         return result.toString();
     }
 
-    public static String replaceNonUTF8Characters1(String input, String replacement) {
+    public static String replaceNonUTF8String(String input, String replacement) {
         Charset utf8Charset = StandardCharsets.UTF_8;
         byte[] utf8Bytes = input.getBytes(utf8Charset);
         
